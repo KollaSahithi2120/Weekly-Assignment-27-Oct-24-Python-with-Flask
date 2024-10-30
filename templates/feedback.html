@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Event Feedback Form</title>
+</head>
+<body>
+    <h2>Event Feedback Form</h2>
+    <form method="POST" action="/feedback">
+        <label for="name">Name:</label>
+        <input type="text" id="name" name="name" required>
+        <br>
+        
+        <label for="branch">Branch:</label>
+        <input type="text" id="branch" name="branch" required>
+        <br>
+
+        <label for="roll_number">Roll Number:</label>
+        <input type="text" id="roll_number" name="roll_number" required>
+        <br>
+
+        <label for="liked">What did you like about the event?</label>
+        <textarea id="liked" name="liked" required></textarea>
+        <br>
+
+        <label for="improvements">Improvements you want to see:</label>
+        <textarea id="improvements" name="improvements"></textarea>
+        <br>
+
+        <label for="next_sessions">Sessions you would like in the future:</label>
+        <textarea id="next_sessions" name="next_sessions"></textarea>
+        <br>
+
+        <label for="drawback">Any drawbacks you noticed:</label>
+        <textarea id="drawback" name="drawback"></textarea>
+        <br>
+
+        <button type="submit">Submit Feedback</button>
+    </form>
+
+    <h3>Feedback History:</h3>
+    <ul>
+        {% for entry in feedback_list %}
+            <li>
+                <strong>Name:</strong> {{ entry.name }}<br>
+                <strong>Branch:</strong> {{ entry.branch }}<br>
+                <strong>Roll Number:</strong> {{ entry.roll_number }}<br>
+                <strong>Liked:</strong> {{ entry.liked }}<br>
+                <strong>Improvements:</strong> {{ entry.improvements }}<br>
+                <strong>Next Sessions:</strong> {{ entry.next_sessions }}<br>
+                <strong>Drawbacks:</strong> {{ entry.drawback }}<br>
+            </li>
+        {% endfor %}
+    </ul>
+</body>
+</html>

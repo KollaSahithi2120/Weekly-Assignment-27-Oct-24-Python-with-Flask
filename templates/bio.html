@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Personal Bio</title>
+</head>
+<body>
+    <h1>{{ info.name }}'s Bio</h1>
+    <p><strong>Email:</strong> {{ info.email }}</p>
+    <p><strong>Phone:</strong> {{ info.phone }}</p>
+    <p><strong>LinkedIn:</strong> {{ info.linkedin }}</p>
+    <p><strong>GitHub:</strong> {{ info.github }}</p>
+
+    <h2>Education</h2>
+    <ul>
+        {% for edu in info.education %}
+            <li>{{ edu.degree }} from {{ edu.institution }} ({{ edu.year }}) - CGPA/Percentage: {{ edu.cgpa or edu.percentage }}</li>
+        {% endfor %}
+    </ul>
+
+    <h2>Technical Skills</h2>
+    <p><strong>Programming Languages:</strong> {{ info.technical_skills.languages | join(', ') }}</p>
+    <p><strong>Technologies:</strong> {{ info.technical_skills.technologies | join(', ') }}</p>
+    <p><strong>Concepts:</strong> {{ info.technical_skills.concepts | join(', ') }}</p>
+    <p><strong>Tools:</strong> {{ info.technical_skills.tools | join(', ') }}</p>
+
+    <h2>Projects</h2>
+    <ul>
+        {% for project in info.projects %}
+            <li><strong>{{ project.title }}:</strong> {{ project.description }}</li>
+        {% endfor %}
+    </ul>
+
+    <h2>Certifications</h2>
+    <ul>
+        {% for cert in info.certifications %}
+            <li>{{ cert }}</li>
+        {% endfor %}
+    </ul>
+
+    <h2>Strengths</h2>
+    <ul>
+        {% for strength in info.strengths %}
+            <li>{{ strength }}</li>
+        {% endfor %}
+    </ul>
+
+    <h2>Hobbies</h2>
+    <ul>
+        {% for hobby in info.hobbies %}
+            <li>{{ hobby }}</li>
+        {% endfor %}
+    </ul>
+
+    <h2>Achievements</h2>
+    <ul>
+        {% for achievement in info.achievements %}
+            <li>{{ achievement }}</li>
+        {% endfor %}
+    </ul>
+</body>
+</html>

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Upload and Visualize Data</title>
+</head>
+<body>
+    <h1>Upload a File for Analysis</h1>
+    
+    {% with messages = get_flashed_messages(with_categories=true) %}
+      {% if messages %}
+        <ul>
+          {% for category, message in messages %}
+            <li class="{{ category }}">{{ message }}</li>
+          {% endfor %}
+        </ul>
+      {% endif %}
+    {% endwith %}
+
+    <form action="/" method="POST" enctype="multipart/form-data">
+        <label for="file">Select a file:</label>
+        <input type="file" name="file" id="file" required>
+        <button type="submit">Upload</button>
+    </form>
+
+    {% if charts %}
+        <h2>Generated Charts</h2>
+        <div>
+            <h3>Bar Chart</h3>
+            <img src="{{ charts['bar_chart'] }}" alt="Bar Chart">
+        </div>
+        <div>
+            <h3>Line Chart</h3>
+            <img src="{{ charts['line_chart'] }}" alt="Line Chart">
+        </div>
+        <div>
+            <h3>Pie Chart</h3>
+            <img src="{{ charts['pie_chart'] }}" alt="Pie Chart">
+        </div>
+    {% endif %}
+</body>
+</html>
